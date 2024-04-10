@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cti7tr57nb2gl"
+path="res://.godot/imported/square highlight.wav-16304ed2b0c29c46e6328702069b80ff.sample"
+
+[deps]
+
+source_file="res://assets/sfx/square highlight.wav"
+dest_files=PackedStringArray("res://.godot/imported/square highlight.wav-16304ed2b0c29c46e6328702069b80ff.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

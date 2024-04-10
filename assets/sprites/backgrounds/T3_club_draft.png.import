@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bdnx7wtic8gve"
+path="res://.godot/imported/T3_club_draft.png-e3340edc86ff8ec97eb95884b50a7cf6.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/backgrounds/T3_club_draft.png"
+dest_files=PackedStringArray("res://.godot/imported/T3_club_draft.png-e3340edc86ff8ec97eb95884b50a7cf6.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

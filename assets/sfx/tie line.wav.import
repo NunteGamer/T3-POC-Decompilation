@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0spkdxpv5bmp"
+path="res://.godot/imported/tie line.wav-195b9d0fc6bdc01137a64fa101004146.sample"
+
+[deps]
+
+source_file="res://assets/sfx/tie line.wav"
+dest_files=PackedStringArray("res://.godot/imported/tie line.wav-195b9d0fc6bdc01137a64fa101004146.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

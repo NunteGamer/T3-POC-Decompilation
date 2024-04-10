@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pr22edc4pl2u"
+path="res://.godot/imported/piece place.wav-e7d9b59e75cb7f95934bdcdbd5345aff.sample"
+
+[deps]
+
+source_file="res://assets/sfx/piece place.wav"
+dest_files=PackedStringArray("res://.godot/imported/piece place.wav-e7d9b59e75cb7f95934bdcdbd5345aff.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

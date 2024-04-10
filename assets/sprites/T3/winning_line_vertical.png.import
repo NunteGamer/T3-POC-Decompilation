@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dch6kgec1sm0w"
+path="res://.godot/imported/winning_line_vertical.png-9aa2e0c6f5124905b79ce965f14c1635.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/T3/winning_line_vertical.png"
+dest_files=PackedStringArray("res://.godot/imported/winning_line_vertical.png-9aa2e0c6f5124905b79ce965f14c1635.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

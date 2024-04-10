@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmel5n0s0fuhw"
+path="res://.godot/imported/winning line.wav-639c9e8758988421660c4afbb4d0d830.sample"
+
+[deps]
+
+source_file="res://assets/sfx/winning line.wav"
+dest_files=PackedStringArray("res://.godot/imported/winning line.wav-639c9e8758988421660c4afbb4d0d830.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

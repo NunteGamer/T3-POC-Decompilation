@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/audio_resource.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://cd8u0r863rowb" path="res://assets/music/files/20 - Hoist the sails!.wav" id="2"]
+
+[resource]
+script = ExtResource("1")
+name = "shipped2"
+file = ExtResource("2")
+volume = 0.0

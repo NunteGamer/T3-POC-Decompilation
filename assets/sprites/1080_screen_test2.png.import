@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bv1yffbr6lv3p"
+path="res://.godot/imported/1080_screen_test2.png-27783978abf85943a19185d8256f33e2.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/1080_screen_test2.png"
+dest_files=PackedStringArray("res://.godot/imported/1080_screen_test2.png-27783978abf85943a19185d8256f33e2.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

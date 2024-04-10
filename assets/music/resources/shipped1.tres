@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/audio_resource.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dl14eeiem7cnl" path="res://assets/music/files/Feliz_alegre_test_fix.wav" id="2"]
+
+[resource]
+script = ExtResource("1")
+name = "shipped1"
+file = ExtResource("2")
+volume = -3.0

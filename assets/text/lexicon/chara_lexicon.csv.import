@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c52rvncu70cy7"
+
+[deps]
+
+files=["res://assets/text/lexicon/chara_lexicon.image.translation", "res://assets/text/lexicon/chara_lexicon.EN.translation", "res://assets/text/lexicon/chara_lexicon.ES.translation"]
+
+source_file="res://assets/text/lexicon/chara_lexicon.csv"
+dest_files=["res://assets/text/lexicon/chara_lexicon.image.translation", "res://assets/text/lexicon/chara_lexicon.EN.translation", "res://assets/text/lexicon/chara_lexicon.ES.translation"]
+
+[params]
+
+compress=true
+delimiter=0

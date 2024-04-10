@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://gc6uxcgbqaoe"
+path="res://.godot/imported/2000_bg_test.png-1bf53dde401e22b8504c883f559c04df.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/2000_bg_test.png"
+dest_files=PackedStringArray("res://.godot/imported/2000_bg_test.png-1bf53dde401e22b8504c883f559c04df.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

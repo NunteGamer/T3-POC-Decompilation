@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kgw58q8mypow"
+path="res://.godot/imported/chara move.wav-d457db7809d5db9e2098881ef5b167d3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/chara move.wav"
+dest_files=PackedStringArray("res://.godot/imported/chara move.wav-d457db7809d5db9e2098881ef5b167d3.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

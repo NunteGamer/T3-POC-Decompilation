@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://214ruc0csuao"
+
+[deps]
+
+files=["res://assets/text/scripts/proof_of_concept_old.Code.translation", "res://assets/text/scripts/proof_of_concept_old.Name.translation", "res://assets/text/scripts/proof_of_concept_old.EN.translation", "res://assets/text/scripts/proof_of_concept_old.ES.translation"]
+
+source_file="res://assets/text/scripts/proof_of_concept_old.csv"
+dest_files=["res://assets/text/scripts/proof_of_concept_old.Code.translation", "res://assets/text/scripts/proof_of_concept_old.Name.translation", "res://assets/text/scripts/proof_of_concept_old.EN.translation", "res://assets/text/scripts/proof_of_concept_old.ES.translation"]
+
+[params]
+
+compress=true
+delimiter=0

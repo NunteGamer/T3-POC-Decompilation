@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dl14eeiem7cnl"
+path="res://.godot/imported/Feliz_alegre_test_fix.wav-55a7aa00611aaa0449bcaf696156b2b7.sample"
+
+[deps]
+
+source_file="res://assets/music/files/Feliz_alegre_test_fix.wav"
+dest_files=PackedStringArray("res://.godot/imported/Feliz_alegre_test_fix.wav-55a7aa00611aaa0449bcaf696156b2b7.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

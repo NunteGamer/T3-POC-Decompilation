@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ScriptResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/script_resource.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+_name = "chara_names"
+_path = "res://assets/text/strings/chara_names.csv"

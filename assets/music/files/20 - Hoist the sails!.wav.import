@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cd8u0r863rowb"
+path="res://.godot/imported/20 - Hoist the sails!.wav-ee68daa3fbd46a7bab4160bdc5c9a2e5.sample"
+
+[deps]
+
+source_file="res://assets/music/files/20 - Hoist the sails!.wav"
+dest_files=["res://.godot/imported/20 - Hoist the sails!.wav-ee68daa3fbd46a7bab4160bdc5c9a2e5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

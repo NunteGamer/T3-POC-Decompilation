@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c7slefbbdgj71"
+
+[deps]
+
+files=["res://assets/text/scripts/proof_of_concept.Code.translation", "res://assets/text/scripts/proof_of_concept.Name.translation", "res://assets/text/scripts/proof_of_concept.EN.translation", "res://assets/text/scripts/proof_of_concept.ES.translation"]
+
+source_file="res://assets/text/scripts/proof_of_concept.csv"
+dest_files=["res://assets/text/scripts/proof_of_concept.Code.translation", "res://assets/text/scripts/proof_of_concept.Name.translation", "res://assets/text/scripts/proof_of_concept.EN.translation", "res://assets/text/scripts/proof_of_concept.ES.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://twtd5307w8e1"
+path="res://.godot/imported/piece move.wav-24eec2552d43a97d4e250803657d526b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/piece move.wav"
+dest_files=PackedStringArray("res://.godot/imported/piece move.wav-24eec2552d43a97d4e250803657d526b.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

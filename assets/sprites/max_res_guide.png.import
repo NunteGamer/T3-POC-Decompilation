@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bnfo5w3oqdkta"
+path="res://.godot/imported/max_res_guide.png-6c7f14d1d8e49c3c9f7c1f8ef4c61b55.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/max_res_guide.png"
+dest_files=PackedStringArray("res://.godot/imported/max_res_guide.png-6c7f14d1d8e49c3c9f7c1f8ef4c61b55.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

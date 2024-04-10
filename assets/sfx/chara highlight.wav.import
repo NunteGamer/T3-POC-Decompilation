@@ -1,0 +1,16 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkyjrk8jjvg2h"
+path="res://.godot/imported/chara highlight.wav-735afa4be0324119bd7d1c2abb53da43.sample"
+
+[deps]
+
+source_file="res://assets/sfx/chara highlight.wav"
+dest_files=PackedStringArray("res://.godot/imported/chara highlight.wav-735afa4be0324119bd7d1c2abb53da43.sample")
+
+[params]
+
+dummy_value_ignore_me=0
+compress/mode=0

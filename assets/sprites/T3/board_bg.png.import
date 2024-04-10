@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://2v4p7xjlhayw"
+path="res://.godot/imported/board_bg.png-486ac9248d25a10f7817ae24eea52f52.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/T3/board_bg.png"
+dest_files=PackedStringArray("res://.godot/imported/board_bg.png-486ac9248d25a10f7817ae24eea52f52.ctex")
+
+[params]
+
+dummy_value_ignore_me=0
