@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bjvp1klnd061f"
+path="res://.godot/imported/csv import options.jpg-a7fe17cc10eecd13c72ae7e09980c1a6.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://docs/csv import options.jpg"
+dest_files=PackedStringArray("res://.godot/imported/csv import options.jpg-a7fe17cc10eecd13c72ae7e09980c1a6.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

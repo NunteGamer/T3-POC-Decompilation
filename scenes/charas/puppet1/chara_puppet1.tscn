@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/charas/puppet1/chara_puppet1.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c32d8psqfcu3r" path="res://assets/sprites/charas/puppet1/body1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://rl3swd8qptyi" path="res://assets/sprites/charas/puppet1/face1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://c2lolrwqfykmp" path="res://assets/sprites/charas/girl1/eyes1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dfgpif8miocd0" path="res://assets/sprites/charas/puppet1/face2.png" id="5"]
+
+[node name="CharaPuppet1" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -607.0
+offset_top = -1978.0
+offset_right = 593.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewportContainer" node_paths=PackedStringArray("body1", "face1", "face2", "eyes1", "eyes2")]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 2200)
+render_target_update_mode = 4
+script = ExtResource("1")
+body1 = NodePath("Body1")
+face1 = NodePath("Body1/Face1")
+face2 = NodePath("Body1/Face2")
+eyes1 = NodePath("Body1/Face1/Eyes1")
+eyes2 = NodePath("Body1/Face1/Eyes2")
+
+[node name="Body1" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport"]
+position = Vector2(600, 1051.4)
+texture = ExtResource("2")
+
+[node name="Face1" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport/Body1"]
+position = Vector2(0.615, -734)
+texture = ExtResource("3")
+
+[node name="Eyes1" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport/Body1/Face1"]
+visible = false
+texture = ExtResource("4")
+
+[node name="Eyes2" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport/Body1/Face1"]
+visible = false
+position = Vector2(1, -12)
+texture = ExtResource("4")
+
+[node name="Face2" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport/Body1"]
+position = Vector2(0.615, -746)
+texture = ExtResource("5")

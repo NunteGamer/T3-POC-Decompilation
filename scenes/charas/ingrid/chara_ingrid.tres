@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/character_resource.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cg8vsaic28f6m" path="res://scenes/charas/ingrid/chara_ingrid.tscn" id="2"]
+
+[resource]
+resource_name = "ingrid"
+script = ExtResource("1")
+code_name = "ingrid"
+_display_name = "Ingrid"
+_packed_scene = ExtResource("2")

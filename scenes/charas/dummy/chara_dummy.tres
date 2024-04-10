@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://custom_resources/character_resource.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bb4cgbp5jts6j" path="res://scenes/charas/dummy/chara_dummy.tscn" id="2"]
+
+[resource]
+resource_name = "dummy"
+script = ExtResource("1")
+code_name = "dummy"
+_display_name = "Dummy"
+_packed_scene = ExtResource("2")

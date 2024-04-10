@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scenes/charas/dummy/chara_dummy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c32d8psqfcu3r" path="res://assets/sprites/charas/puppet1/body1.png" id="2"]
+
+[node name="CharaDummy" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -1978.0
+offset_right = 600.0
+offset_bottom = 222.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewportContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer/SubViewportContainer" node_paths=PackedStringArray("body1")]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 2200)
+render_target_update_mode = 4
+script = ExtResource("1")
+body1 = NodePath("Body1")
+
+[node name="Body1" type="Sprite2D" parent="SubViewportContainer/SubViewportContainer/SubViewport"]
+position = Vector2(600, 1051.4)
+texture = ExtResource("2")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scenes/charas/daisy/chara_daisy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://kdev6oumfils" path="res://assets/sprites/charas/daisy/body.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cmlfh42deaitm" path="res://assets/sprites/charas/daisy/face1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dslp054ryylbr" path="res://assets/sprites/charas/daisy/face2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://ejpd6tudhhda" path="res://assets/sprites/charas/daisy/face3.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dgw20porco5mh" path="res://assets/sprites/charas/daisy/face4.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://b4rlnrf2o2ker" path="res://assets/sprites/charas/daisy/face5.png" id="7"]
+
+[node name="CharaDaisy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SVP_Container" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -599.807
+offset_top = -1620.0
+offset_right = 599.808
+offset_bottom = 843.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(592.807, 1834)
+metadata/_edit_use_anchors_ = true
+
+[node name="TintModulation" type="SubViewportContainer" parent="SVP_Container"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="SVP_Container/TintModulation" node_paths=PackedStringArray("face_marker", "body1", "face1", "face2", "face3", "face4", "face5")]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1200, 2200)
+render_target_update_mode = 4
+script = ExtResource("1")
+face_marker = NodePath("../../FaceMarker")
+body1 = NodePath("Body1")
+face1 = NodePath("Body1/Face1")
+face2 = NodePath("Body1/Face2")
+face3 = NodePath("Body1/Face3")
+face4 = NodePath("Body1/Face4")
+face5 = NodePath("Body1/Face5")
+
+[node name="Body1" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport"]
+position = Vector2(600, 1000)
+texture = ExtResource("2")
+
+[node name="Face1" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport/Body1"]
+position = Vector2(-12, -524)
+texture = ExtResource("3")
+
+[node name="Face2" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport/Body1"]
+position = Vector2(-12, -461)
+texture = ExtResource("4")
+
+[node name="Face3" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport/Body1"]
+position = Vector2(-12, -524)
+texture = ExtResource("5")
+
+[node name="Face4" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport/Body1"]
+position = Vector2(-12, -524)
+texture = ExtResource("6")
+
+[node name="Face5" type="Sprite2D" parent="SVP_Container/TintModulation/SubViewport/Body1"]
+position = Vector2(-12, -458.04)
+texture = ExtResource("7")
+
+[node name="FaceMarker" type="Marker2D" parent="SVP_Container"]
+position = Vector2(585.807, 622)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0

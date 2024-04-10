@@ -1,0 +1,641 @@
+[gd_scene load_steps=60 format=3 uid="uid://cbrgscxru4qvi"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/main_game_controller.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/script_manager.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/script_list.gd" id="3"]
+[ext_resource type="Resource" path="res://assets/text/scripts/test1.tres" id="4"]
+[ext_resource type="Resource" path="res://assets/text/scripts/test2.tres" id="5"]
+[ext_resource type="Resource" path="res://assets/text/scripts/test3.tres" id="6"]
+[ext_resource type="Resource" path="res://assets/text/scripts/proof_of_concept.tres" id="7"]
+[ext_resource type="Script" path="res://scenes/script_manager/csv/csv_manager.gd" id="8"]
+[ext_resource type="Script" path="res://scenes/script_manager/csv/csv_parser.gd" id="9"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/script_reader.gd" id="10"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/code_parser.gd" id="11"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/bg_controler.gd" id="12"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/bg_list.gd" id="13"]
+[ext_resource type="Resource" path="res://assets/sprites/backgrounds/t3_club.tres" id="14"]
+[ext_resource type="Resource" path="res://assets/sprites/backgrounds/classroom_test.tres" id="15"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/chara_controller.gd" id="16"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/character_list.gd" id="17"]
+[ext_resource type="Resource" path="res://scenes/charas/dummy/chara_dummy.tres" id="18"]
+[ext_resource type="Resource" path="res://scenes/charas/nikola/chara_nikola.tres" id="19"]
+[ext_resource type="Resource" path="res://scenes/charas/daisy/chara_daisy.tres" id="20"]
+[ext_resource type="Resource" path="res://scenes/charas/ingrid/chara_ingrid.tres" id="21"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/position_parser.gd" id="22"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/fade_controller.gd" id="23"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/camera_controller.gd" id="24"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/game_functions.gd" id="25"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/custom_functions.gd" id="26"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/flag_controller.gd" id="27"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/flag_list.gd" id="28"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/audio_controller.gd" id="29"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/music_controller.gd" id="30"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/music_list.gd" id="31"]
+[ext_resource type="Resource" path="res://assets/music/resources/shipped1.tres" id="32"]
+[ext_resource type="Resource" path="res://assets/music/resources/shipped2.tres" id="33"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/SFX_controller.gd" id="34"]
+[ext_resource type="Script" path="res://scenes/script_manager/SFX_list.gd" id="35"]
+[ext_resource type="AudioStream" uid="uid://kgw58q8mypow" path="res://assets/sfx/chara move.wav" id="36"]
+[ext_resource type="AudioStream" uid="uid://bkyjrk8jjvg2h" path="res://assets/sfx/chara highlight.wav" id="37"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/textbox_controller.gd" id="38"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/dialogue_parser.gd" id="39"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/tag_manager.gd" id="40"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/lexicon_controller.gd" id="41"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/dialogue_sound.gd" id="42"]
+[ext_resource type="AudioStream" uid="uid://orp22gh6evcr" path="res://assets/sfx/Beep Selection 01 - Sound Ex Machina.wav" id="43"]
+[ext_resource type="Script" path="res://scenes/script_manager/script/name_parser.gd" id="44"]
+[ext_resource type="Resource" path="res://assets/text/strings/chara_names.tres" id="45"]
+[ext_resource type="Script" path="res://scenes/screen/screen_camera.gd" id="46"]
+[ext_resource type="Texture2D" uid="uid://dt0ttdjta7j7t" path="res://assets/sprites/screen_mask.png" id="47"]
+[ext_resource type="Script" path="res://scenes/main_camera/main_camera.gd" id="48"]
+[ext_resource type="Script" path="res://scenes/main_camera/screen_shake.gd" id="49"]
+[ext_resource type="Script" path="res://scenes/background_container/background_container.gd" id="50"]
+[ext_resource type="Shader" path="res://shaders/blur.gdshader" id="51"]
+[ext_resource type="Texture2D" uid="uid://bdnx7wtic8gve" path="res://assets/sprites/backgrounds/T3_club_draft.png" id="52"]
+[ext_resource type="Texture2D" uid="uid://bnfo5w3oqdkta" path="res://assets/sprites/max_res_guide.png" id="53"]
+[ext_resource type="Texture2D" uid="uid://d2g3ir0e813c6" path="res://assets/sprites/4_3.png" id="54"]
+[ext_resource type="Script" path="res://scenes/screen/charas_container.gd" id="55"]
+[ext_resource type="Texture2D" uid="uid://i0m8j348fbq1" path="res://icon.svg" id="56"]
+[ext_resource type="PackedScene" path="res://scenes/fade/fade.tscn" id="57"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("51")
+shader_parameter/step = Vector2(0, 0)
+shader_parameter/radius = 10.0
+
+[sub_resource type="ShaderMaterial" id="2"]
+shader = ExtResource("51")
+shader_parameter/step = Vector2(2, 0)
+shader_parameter/radius = 20.0
+
+[node name="MainScene" type="Node"]
+
+[node name="MainGameController" type="Node" parent="." node_paths=PackedStringArray("screen_camera")]
+script = ExtResource("1")
+screen_camera = NodePath("../ScreenCamera")
+
+[node name="ScriptManager" type="Node" parent="." node_paths=PackedStringArray("script_list", "csv_manager", "csv_parser", "script_reader", "camera_controller")]
+script = ExtResource("2")
+_print_debug = true
+script_list = NodePath("ScriptList")
+csv_manager = NodePath("CSVManager")
+csv_parser = NodePath("CSVParser")
+script_reader = NodePath("ScriptReader")
+camera_controller = NodePath("ScriptReader/CodeParser/CameraController")
+
+[node name="ScriptList" type="Node" parent="ScriptManager"]
+script = ExtResource("3")
+scripts = Array[Resource("res://custom_resources/script_resource.gd")]([ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7")])
+
+[node name="CSVManager" type="Node" parent="ScriptManager"]
+script = ExtResource("8")
+
+[node name="CSVParser" type="Node" parent="ScriptManager" node_paths=PackedStringArray("script_manager")]
+script = ExtResource("9")
+script_manager = NodePath("..")
+
+[node name="ScriptReader" type="Node" parent="ScriptManager" node_paths=PackedStringArray("code_parser", "name_parser", "dialogue_parser", "textbox_controller")]
+script = ExtResource("10")
+_print_debug = true
+code_parser = NodePath("CodeParser")
+name_parser = NodePath("Textbox/NameParser")
+dialogue_parser = NodePath("Textbox/DialogueParser")
+textbox_controller = NodePath("Textbox/TextboxController")
+
+[node name="CodeParser" type="Node" parent="ScriptManager/ScriptReader" node_paths=PackedStringArray("script_manager", "script_reader", "chara_controller", "bg_controller", "fade_controller", "camera_controller", "game_functions", "custom_functions", "flag_controller", "audio_controller")]
+script = ExtResource("11")
+_print_debug = true
+script_manager = NodePath("../..")
+script_reader = NodePath("..")
+chara_controller = NodePath("CharaController")
+bg_controller = NodePath("BGControler")
+fade_controller = NodePath("FadeController")
+camera_controller = NodePath("CameraController")
+game_functions = NodePath("GameFunctions")
+custom_functions = NodePath("CustomFunctions")
+flag_controller = NodePath("FlagController")
+audio_controller = NodePath("AudioController")
+
+[node name="BGControler" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("script_reader", "code_parser", "bg_list", "bg_container", "bg_sprite2D")]
+script = ExtResource("12")
+script_reader = NodePath("../..")
+code_parser = NodePath("..")
+bg_list = NodePath("BGList")
+bg_container = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer")
+bg_sprite2D = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer/BGSprite2D")
+
+[node name="BGList" type="Node" parent="ScriptManager/ScriptReader/CodeParser/BGControler"]
+script = ExtResource("13")
+bgs = Array[Resource("res://custom_resources/background_resource.gd")]([ExtResource("14"), ExtResource("15")])
+
+[node name="CharaController" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("character_list", "script_reader", "code_parser", "position_parser", "camera_controller", "charas_container", "screen_camera", "sfx_controller")]
+script = ExtResource("16")
+character_list = NodePath("CharacterList")
+script_reader = NodePath("../..")
+code_parser = NodePath("..")
+position_parser = NodePath("PositionParser")
+camera_controller = NodePath("../CameraController")
+charas_container = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/CharasContainerOffset/CharasContainer")
+screen_camera = NodePath("../../../../ScreenCamera")
+sfx_controller = NodePath("../AudioController/SFXController")
+
+[node name="CharacterList" type="Node" parent="ScriptManager/ScriptReader/CodeParser/CharaController"]
+script = ExtResource("17")
+characters = Array[Resource("res://custom_resources/character_resource.gd")]([ExtResource("18"), ExtResource("19"), ExtResource("20"), ExtResource("21")])
+
+[node name="PositionParser" type="Node" parent="ScriptManager/ScriptReader/CodeParser/CharaController" node_paths=PackedStringArray("screen_subviewport")]
+script = ExtResource("22")
+screen_subviewport = NodePath("../../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport")
+
+[node name="FadeController" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("code_parser", "fade")]
+script = ExtResource("23")
+code_parser = NodePath("..")
+fade = NodePath("../../../../Fade")
+
+[node name="CameraController" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("camera", "screen_camera", "main_game_controller", "code_parser", "bg_container", "chara_controller", "script_reader")]
+script = ExtResource("24")
+camera = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScriptCamera")
+screen_camera = NodePath("../../../../ScreenCamera")
+main_game_controller = NodePath("../../../../MainGameController")
+code_parser = NodePath("..")
+bg_container = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer")
+chara_controller = NodePath("../CharaController")
+script_reader = NodePath("../..")
+
+[node name="GameFunctions" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("main_game_controller", "script_manager", "script_reader", "main_scene", "screen_camera", "code_parser", "flag_controller")]
+script = ExtResource("25")
+main_game_controller = NodePath("../../../../MainGameController")
+script_manager = NodePath("../../..")
+script_reader = NodePath("../..")
+main_scene = NodePath("../../../..")
+screen_camera = NodePath("../../../../ScreenCamera")
+code_parser = NodePath("..")
+flag_controller = NodePath("../FlagController")
+
+[node name="CustomFunctions" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("code_parser", "game_functions", "textbox_controller")]
+script = ExtResource("26")
+code_parser = NodePath("..")
+game_functions = NodePath("../GameFunctions")
+textbox_controller = NodePath("../../Textbox/TextboxController")
+
+[node name="FlagController" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("flag_list", "main_game_controller", "script_reader", "code_parser", "game_functions")]
+script = ExtResource("27")
+_print_debug = true
+flag_list = NodePath("FlagList")
+main_game_controller = NodePath("../../../../MainGameController")
+script_reader = NodePath("../..")
+code_parser = NodePath("..")
+game_functions = NodePath("../GameFunctions")
+
+[node name="FlagList" type="Node" parent="ScriptManager/ScriptReader/CodeParser/FlagController"]
+script = ExtResource("28")
+_print_debug = true
+
+[node name="AudioController" type="Node" parent="ScriptManager/ScriptReader/CodeParser" node_paths=PackedStringArray("music_controller")]
+script = ExtResource("29")
+music_controller = NodePath("MusicController")
+
+[node name="MusicController" type="Node" parent="ScriptManager/ScriptReader/CodeParser/AudioController" node_paths=PackedStringArray("music_list", "music_player1", "music_player2")]
+script = ExtResource("30")
+_print_debug = true
+music_list = NodePath("MusicList")
+music_player1 = NodePath("MusicPlayer1")
+music_player2 = NodePath("MusicPlayer2")
+
+[node name="MusicList" type="Node" parent="ScriptManager/ScriptReader/CodeParser/AudioController/MusicController"]
+script = ExtResource("31")
+musics = Array[Resource("res://custom_resources/audio_resource.gd")]([ExtResource("32"), ExtResource("33")])
+
+[node name="MusicPlayer1" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/MusicController"]
+bus = &"Music"
+
+[node name="MusicPlayer2" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/MusicController"]
+bus = &"Music"
+
+[node name="SFXController" type="Node" parent="ScriptManager/ScriptReader/CodeParser/AudioController" node_paths=PackedStringArray("sfx_list", "sfx_players")]
+script = ExtResource("34")
+sfx_list = NodePath("SFXList")
+sfx_players = [NodePath("SFXPlayer1"), NodePath("SFXPlayer2"), NodePath("SFXPlayer3"), NodePath("SFXPlayer4")]
+
+[node name="SFXList" type="Node" parent="ScriptManager/ScriptReader/CodeParser/AudioController/SFXController"]
+script = ExtResource("35")
+chara_move = ExtResource("36")
+chara_highlight = ExtResource("37")
+
+[node name="SFXPlayer1" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/SFXController"]
+bus = &"SFX"
+
+[node name="SFXPlayer2" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/SFXController"]
+bus = &"SFX"
+
+[node name="SFXPlayer3" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/SFXController"]
+bus = &"SFX"
+
+[node name="SFXPlayer4" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/CodeParser/AudioController/SFXController"]
+bus = &"SFX"
+
+[node name="Textbox" type="Node" parent="ScriptManager/ScriptReader"]
+
+[node name="TextboxController" type="Node" parent="ScriptManager/ScriptReader/Textbox" node_paths=PackedStringArray("name_box", "dialogue_box", "script_reader", "dialogue_parser")]
+script = ExtResource("38")
+name_box = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/NameBox")
+dialogue_box = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/DialogueBox")
+script_reader = NodePath("../..")
+dialogue_parser = NodePath("../DialogueParser")
+
+[node name="DialogueParser" type="Node" parent="ScriptManager/ScriptReader/Textbox" node_paths=PackedStringArray("script_reader", "tag_manager", "dialogue_sound", "dialogue_label", "type_timer", "fade_timer")]
+script = ExtResource("39")
+language = "es"
+type_individual_characters = true
+pause_on_spaces = true
+dynamic_word_type_sound = true
+default_text_color = Color(1, 1, 1, 1)
+lexicon_color = Color(1, 0.541176, 0.54902, 1)
+script_reader = NodePath("../..")
+tag_manager = NodePath("TagManager")
+dialogue_sound = NodePath("DialogueSound")
+dialogue_label = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/DialogueBox/VisualBox/DialogueLabel")
+type_timer = NodePath("TypeTimer")
+fade_timer = NodePath("FadeTimer")
+pause_punctuation = Array[String]([",", ".", ";", ":"])
+other_punctuation = Array[String](["¡", "!", "¿", "?", "-"])
+
+[node name="TagManager" type="Node" parent="ScriptManager/ScriptReader/Textbox/DialogueParser" node_paths=PackedStringArray("dialogue_parser", "flag_list")]
+script = ExtResource("40")
+dialogue_parser = NodePath("..")
+flag_list = NodePath("../../../CodeParser/FlagController/FlagList")
+
+[node name="LexiconController" type="Node" parent="ScriptManager/ScriptReader/Textbox/DialogueParser" node_paths=PackedStringArray("lexicon_label", "lexicon_box")]
+script = ExtResource("41")
+lexicon_label = NodePath("../../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/LexiconBox/VisualBox/LexiconLabel")
+lexicon_box = NodePath("../../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/LexiconBox")
+
+[node name="DialogueSound" type="AudioStreamPlayer2D" parent="ScriptManager/ScriptReader/Textbox/DialogueParser"]
+volume_db = -2.0
+bus = &"SFX"
+script = ExtResource("42")
+dialogue_sound_1 = ExtResource("43")
+
+[node name="TypeTimer" type="Timer" parent="ScriptManager/ScriptReader/Textbox/DialogueParser"]
+wait_time = 0.1
+one_shot = true
+
+[node name="FadeTimer" type="Timer" parent="ScriptManager/ScriptReader/Textbox/DialogueParser"]
+wait_time = 0.1
+one_shot = true
+
+[node name="NameParser" type="Node" parent="ScriptManager/ScriptReader/Textbox" node_paths=PackedStringArray("character_list", "csv_manager", "csv_parser", "script_reader", "textbox_controller", "chara_controller", "camera_controller", "name_label")]
+script = ExtResource("44")
+character_list = NodePath("../../CodeParser/CharaController/CharacterList")
+name_list = ExtResource("45")
+csv_manager = NodePath("../../../CSVManager")
+csv_parser = NodePath("../../../CSVParser")
+script_reader = NodePath("../..")
+textbox_controller = NodePath("../TextboxController")
+chara_controller = NodePath("../../CodeParser/CharaController")
+camera_controller = NodePath("../../CodeParser/CameraController")
+name_label = NodePath("../../../../ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/NameBox/VisualBox/NameLabel")
+default_text_color = Color(1, 1, 1, 1)
+
+[node name="ScreenCamera" type="Camera2D" parent="." node_paths=PackedStringArray("main_game_controller", "screen_texture_rect", "screen_svc", "screen_sv", "camera_controler", "bg_container", "charas_container", "ui_layer", "dialogue_label")]
+script = ExtResource("46")
+main_game_controller = NodePath("../MainGameController")
+screen_texture_rect = NodePath("ScreenMask")
+screen_svc = NodePath("ScreenMask/ScreenSubViewportContainer")
+screen_sv = NodePath("ScreenMask/ScreenSubViewportContainer/ScreenSubViewport")
+camera_controler = NodePath("../ScriptManager/ScriptReader/CodeParser/CameraController")
+bg_container = NodePath("ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer")
+charas_container = NodePath("ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/CharasContainerOffset/CharasContainer")
+ui_layer = NodePath("ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer")
+dialogue_label = NodePath("ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/DialogueBox/VisualBox/DialogueLabel")
+
+[node name="ScreenMask" type="TextureRect" parent="ScreenCamera"]
+clip_children = 1
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1584.0
+offset_top = -720.0
+offset_right = 1584.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+texture = ExtResource("47")
+
+[node name="ScreenSubViewportContainer" type="SubViewportContainer" parent="ScreenCamera/ScreenMask"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2000.0
+offset_top = -1000.0
+offset_right = 2000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+
+[node name="ScreenSubViewport" type="SubViewport" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(4000, 2000)
+render_target_update_mode = 4
+
+[node name="ScriptCamera" type="Camera2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport" node_paths=PackedStringArray("screen_shake")]
+offset = Vector2(2000, 1000)
+script = ExtResource("48")
+screen_shake = NodePath("ScreenShake")
+
+[node name="ScreenShake" type="Node" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScriptCamera" node_paths=PackedStringArray("camera")]
+script = ExtResource("49")
+camera = NodePath("..")
+
+[node name="BGContainerOffset" type="Node2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport"]
+position = Vector2(2000, 1000)
+
+[node name="BGContainer" type="Node2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset" node_paths=PackedStringArray("bg", "script_camera", "screen_camera")]
+script = ExtResource("50")
+bg = NodePath("BGSprite2D")
+script_camera = NodePath("../../ScriptCamera")
+screen_camera = NodePath("../../../../..")
+
+[node name="BGSprite2D" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer"]
+material = SubResource("1")
+texture = ExtResource("52")
+
+[node name="BGSprite2D2" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer"]
+visible = false
+material = SubResource("2")
+texture = ExtResource("52")
+
+[node name="max_res_guide" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer"]
+visible = false
+texture = ExtResource("53")
+
+[node name="4_3" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/BGContainerOffset/BGContainer"]
+visible = false
+scale = Vector2(1.40625, 1.40625)
+texture = ExtResource("54")
+
+[node name="CharasContainerOffset" type="Node2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport"]
+position = Vector2(2000, 1000)
+
+[node name="CharasContainer" type="Node2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/CharasContainerOffset" node_paths=PackedStringArray("screen_camera", "chara_controller")]
+script = ExtResource("55")
+screen_camera = NodePath("../../../../..")
+chara_controller = NodePath("../../../../../../ScriptManager/ScriptReader/CodeParser/CharaController")
+
+[node name="ScreenUI" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="UILayer" type="CanvasLayer" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI"]
+
+[node name="NameBox" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1520.0
+offset_top = -10.175
+offset_right = -1520.0
+offset_bottom = -10.175
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VisualBox" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/NameBox"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 250.0
+offset_right = 1300.0
+offset_bottom = 310.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.196078)
+
+[node name="NameLabel" type="RichTextLabel" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/NameBox/VisualBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 1
+theme_override_constants/outline_size = 1
+bbcode_enabled = true
+meta_underlined = false
+
+[node name="DialogueBox" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VisualBox" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/DialogueBox"]
+layout_mode = 0
+offset_left = -1644.0
+offset_top = 300.0
+offset_right = 1644.0
+offset_bottom = 600.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.196078)
+
+[node name="DialogueLabel" type="RichTextLabel" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/DialogueBox/VisualBox"]
+layout_mode = 0
+offset_left = 1144.0
+offset_top = 40.0
+offset_right = 2144.0
+offset_bottom = 280.0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 0
+bbcode_enabled = true
+meta_underlined = false
+
+[node name="LexiconBox" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -720.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VisualBox" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/LexiconBox"]
+layout_mode = 0
+offset_left = -500.0
+offset_top = 300.0
+offset_right = 500.0
+offset_bottom = 900.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.294118)
+
+[node name="LexiconLabel" type="RichTextLabel" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/UILayer/LexiconBox/VisualBox"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 40.0
+offset_right = 950.0
+offset_bottom = 540.0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 1
+bbcode_enabled = true
+text = "fcvbsdfgvsdfsd"
+meta_underlined = false
+
+[node name="DebugUISize" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="FullRect" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/DebugUISize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(1, 1, 0.647059, 0.745098)
+
+[node name="TopLeft" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/DebugUISize"]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_filter = 1
+color = Color(0.337255, 0.360784, 0, 0.745098)
+
+[node name="BottomRight" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/DebugUISize"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+color = Color(0.337255, 0.360784, 0, 0.745098)
+
+[node name="Control" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/DebugUISize"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Center" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/ScreenUI/DebugUISize/Control"]
+modulate = Color(1, 1, 0.419608, 1)
+texture = ExtResource("56")
+
+[node name="DebugSvSize" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FullRect" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/DebugSvSize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.745098)
+
+[node name="TopLeft" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/DebugSvSize"]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.360784, 0.360784, 0.360784, 0.745098)
+
+[node name="BottomRight" type="ColorRect" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/DebugSvSize"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.360784, 0.360784, 0.360784, 0.745098)
+
+[node name="Control" type="Control" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/DebugSvSize"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="Sprite2D" parent="ScreenCamera/ScreenMask/ScreenSubViewportContainer/ScreenSubViewport/DebugSvSize/Control"]
+texture = ExtResource("56")
+
+[node name="Fade" parent="." instance=ExtResource("57")]
+visible = false
+
+[node name="Settings" type="Node" parent="."]

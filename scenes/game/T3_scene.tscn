@@ -1,0 +1,501 @@
+[gd_scene load_steps=24 format=3]
+
+[ext_resource type="Script" path="res://scenes/game/T3_scene.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/game/game_initializer.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/game/game_controller.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/game/game_logic.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/game/T3_AI.gd" id="5"]
+[ext_resource type="Script" path="res://scenes/game/T3_calculations.gd" id="6"]
+[ext_resource type="Script" path="res://scenes/game/condition_controller.gd" id="7"]
+[ext_resource type="Script" path="res://scenes/game/game_flag_list.gd" id="8"]
+[ext_resource type="Script" path="res://scenes/game/input_controller.gd" id="9"]
+[ext_resource type="Script" path="res://scenes/game/game_UI_controller.gd" id="10"]
+[ext_resource type="Script" path="res://scenes/game/board_controller.gd" id="11"]
+[ext_resource type="Script" path="res://scenes/game/game_audio_controller.gd" id="12"]
+[ext_resource type="Script" path="res://scenes/game/SFX_list.gd" id="13"]
+[ext_resource type="AudioStream" uid="uid://twtd5307w8e1" path="res://assets/sfx/piece move.wav" id="14"]
+[ext_resource type="AudioStream" uid="uid://pr22edc4pl2u" path="res://assets/sfx/piece place.wav" id="15"]
+[ext_resource type="AudioStream" uid="uid://dmel5n0s0fuhw" path="res://assets/sfx/winning line.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://d0spkdxpv5bmp" path="res://assets/sfx/tie line.wav" id="17"]
+[ext_resource type="AudioStream" uid="uid://cti7tr57nb2gl" path="res://assets/sfx/square highlight.wav" id="18"]
+[ext_resource type="Texture2D" uid="uid://dt0ttdjta7j7t" path="res://assets/sprites/screen_mask.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://2v4p7xjlhayw" path="res://assets/sprites/T3/board_bg.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://dmgptifgcomvj" path="res://assets/sprites/T3/board.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://dch6kgec1sm0w" path="res://assets/sprites/T3/winning_line_vertical.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://djfhqw8ougdke" path="res://assets/sprites/T3/winning_line_diagonal.png" id="23"]
+
+[node name="T3Scene" type="Node" node_paths=PackedStringArray("game_initializer", "game_controller", "condition_controller", "game_flag_list", "T3_scene_texture_rect", "T3_scene_offset", "T3_scene_container", "board_areas")]
+script = ExtResource("1")
+game_initializer = NodePath("GameInitializer")
+game_controller = NodePath("GameController")
+condition_controller = NodePath("GameController/ConditionController")
+game_flag_list = NodePath("GameController/ConditionController/GameFlagList")
+T3_scene_texture_rect = NodePath("T3SceneScreenMask/T3SceneMask")
+T3_scene_offset = NodePath("T3SceneScreenMask/T3SceneMask/T3SceneOffset")
+T3_scene_container = NodePath("T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer")
+board_areas = NodePath("T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/BoardAreas")
+
+[node name="GameInitializer" type="Node" parent="." node_paths=PackedStringArray("game_controller", "board_controller", "T3_ai")]
+script = ExtResource("2")
+game_controller = NodePath("../GameController")
+board_controller = NodePath("../BoardController")
+T3_ai = NodePath("../GameController/GameLogic/T3AI")
+
+[node name="GameController" type="Node" parent="." node_paths=PackedStringArray("_T3_scene", "game_initializer", "game_logic", "T3_ai", "condition_controller", "game_flag_list", "board_controller", "game_ui_controller")]
+script = ExtResource("3")
+_print_debug = true
+_T3_scene = NodePath("..")
+game_initializer = NodePath("../GameInitializer")
+game_logic = NodePath("GameLogic")
+T3_ai = NodePath("GameLogic/T3AI")
+condition_controller = NodePath("ConditionController")
+game_flag_list = NodePath("ConditionController/GameFlagList")
+board_controller = NodePath("../BoardController")
+game_ui_controller = NodePath("GameUIController")
+
+[node name="GameLogic" type="Node" parent="GameController"]
+script = ExtResource("4")
+_print_debug = true
+
+[node name="T3AI" type="Node" parent="GameController/GameLogic" node_paths=PackedStringArray("game_controller", "game_logic", "T3_calculations", "game_flag_list")]
+script = ExtResource("5")
+_print_debug = true
+game_controller = NodePath("../..")
+game_logic = NodePath("..")
+T3_calculations = NodePath("T3Calculations")
+game_flag_list = NodePath("../../ConditionController/GameFlagList")
+
+[node name="T3Calculations" type="Node" parent="GameController/GameLogic/T3AI"]
+script = ExtResource("6")
+
+[node name="ConditionController" type="Node" parent="GameController" node_paths=PackedStringArray("T3_scene", "game_flag_list", "game_controller")]
+script = ExtResource("7")
+_print_debug = true
+T3_scene = NodePath("../..")
+game_flag_list = NodePath("GameFlagList")
+game_controller = NodePath("..")
+
+[node name="GameFlagList" type="Node" parent="GameController/ConditionController"]
+script = ExtResource("8")
+
+[node name="InputController" type="Node" parent="GameController" node_paths=PackedStringArray("game_controller", "board_controller")]
+script = ExtResource("9")
+game_controller = NodePath("..")
+board_controller = NodePath("../../BoardController")
+
+[node name="GameUIController" type="Node" parent="GameController" node_paths=PackedStringArray("game_ui", "rival_score_label", "player_score_label", "game_counter_label")]
+script = ExtResource("10")
+game_ui = NodePath("../../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI")
+rival_score_label = NodePath("../../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/RivalScoreRect/RivalScoreLabel")
+player_score_label = NodePath("../../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/PlayerScoreRect2/PlayerScoreLabel2")
+game_counter_label = NodePath("../../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/GameCountRect3/GameCountLabel2")
+
+[node name="BoardController" type="Node" parent="." node_paths=PackedStringArray("game_controller", "T3_scene_container", "board_areas", "squares_highlights", "winning_lines", "tie_lines", "game_audio_controller")]
+script = ExtResource("11")
+game_controller = NodePath("../GameController")
+T3_scene_container = NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer")
+board_areas = NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/BoardAreas")
+squares_highlights = [NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight1"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight2"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight3"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight4"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight5"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight6"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight7"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight8"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/Highlight9")]
+winning_lines = [NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line1-3"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line4-6"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line7-9"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line1-7"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line2-8"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line3-9"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line1-9"), NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines/Line3-7")]
+tie_lines = NodePath("../T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/TieLines")
+game_audio_controller = NodePath("GameAudioController")
+
+[node name="GameAudioController" type="Node" parent="BoardController" node_paths=PackedStringArray("sfx_list", "sfx_players")]
+script = ExtResource("12")
+sfx_list = NodePath("SFXList")
+sfx_players = [NodePath("SFXPlayer1"), NodePath("SFXPlayer2"), NodePath("SFXPlayer3"), NodePath("SFXPlayer4")]
+
+[node name="SFXList" type="Node" parent="BoardController/GameAudioController"]
+script = ExtResource("13")
+piece_move = ExtResource("14")
+piece_place = ExtResource("15")
+winning_line = ExtResource("16")
+tie_line = ExtResource("17")
+square_highlight = ExtResource("18")
+
+[node name="SFXPlayer1" type="AudioStreamPlayer2D" parent="BoardController/GameAudioController"]
+bus = &"SFX"
+
+[node name="SFXPlayer2" type="AudioStreamPlayer2D" parent="BoardController/GameAudioController"]
+bus = &"SFX"
+
+[node name="SFXPlayer3" type="AudioStreamPlayer2D" parent="BoardController/GameAudioController"]
+bus = &"SFX"
+
+[node name="SFXPlayer4" type="AudioStreamPlayer2D" parent="BoardController/GameAudioController"]
+bus = &"SFX"
+
+[node name="T3SceneScreenMask" type="Sprite2D" parent="."]
+clip_children = 1
+texture = ExtResource("19")
+
+[node name="T3SceneMask" type="TextureRect" parent="T3SceneScreenMask"]
+clip_children = 1
+clip_contents = true
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -1584.0
+offset_top = -1440.0
+offset_right = 1584.0
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 2
+
+[node name="T3SceneOffset" type="Node2D" parent="T3SceneScreenMask/T3SceneMask"]
+position = Vector2(0, 740)
+
+[node name="T3SceneContainer" type="Node2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset"]
+
+[node name="BG" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer"]
+texture = ExtResource("20")
+
+[node name="Board" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21")
+
+[node name="WinningLines" type="Node2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+
+[node name="Line1-3" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+position = Vector2(0, -550)
+rotation = 1.5708
+texture = ExtResource("22")
+
+[node name="Line4-6" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+rotation = 1.5708
+texture = ExtResource("22")
+
+[node name="Line7-9" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+position = Vector2(0, 550)
+rotation = 1.5708
+texture = ExtResource("22")
+
+[node name="Line1-7" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+position = Vector2(-550, 0)
+texture = ExtResource("22")
+
+[node name="Line2-8" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+texture = ExtResource("22")
+
+[node name="Line3-9" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+position = Vector2(550, 0)
+texture = ExtResource("22")
+
+[node name="Line1-9" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+texture = ExtResource("23")
+flip_h = true
+
+[node name="Line3-7" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/WinningLines"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.901961, 0, 0.737255)
+z_index = 1
+texture = ExtResource("23")
+
+[node name="TieLines" type="Node2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="LineR" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/TieLines"]
+self_modulate = Color(1, 1, 1, 0.737255)
+position = Vector2(850, 0)
+texture = ExtResource("22")
+
+[node name="LineL" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/TieLines"]
+self_modulate = Color(1, 1, 1, 0.737255)
+position = Vector2(-850, 0)
+texture = ExtResource("22")
+
+[node name="LineU" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/TieLines"]
+self_modulate = Color(1, 1, 1, 0.737255)
+position = Vector2(0, -850)
+rotation = 1.5708
+texture = ExtResource("22")
+
+[node name="LineD" type="Sprite2D" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board/TieLines"]
+self_modulate = Color(1, 1, 1, 0.737255)
+position = Vector2(0, 850)
+rotation = 1.5708
+texture = ExtResource("22")
+
+[node name="Highlight1" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1695.5
+offset_top = -1695.5
+offset_right = -1145.5
+offset_bottom = -1145.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight2" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1130.5
+offset_top = -1695.5
+offset_right = -580.5
+offset_bottom = -1145.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight3" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -565.5
+offset_top = -1695.5
+offset_right = -15.5
+offset_bottom = -1145.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight4" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1695.5
+offset_top = -1130.5
+offset_right = -1145.5
+offset_bottom = -580.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight5" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1130.5
+offset_top = -1130.5
+offset_right = -580.5
+offset_bottom = -580.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight6" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -565.5
+offset_top = -1130.5
+offset_right = -15.5
+offset_bottom = -580.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight7" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1695.5
+offset_top = -565.5
+offset_right = -1145.5
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight8" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1130.5
+offset_top = -565.5
+offset_right = -580.5
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="Highlight9" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/Board"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -565.5
+offset_top = -565.5
+offset_right = -15.5
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.490196, 0.368627)
+
+[node name="GameUI" type="Control" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 460.0
+offset_top = -45.0
+offset_right = 460.0
+offset_bottom = -45.0
+
+[node name="RivalScoreRect" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI"]
+layout_mode = 0
+offset_top = -150.0
+offset_right = 190.0
+offset_bottom = -60.0
+color = Color(0, 0, 0, 0.196078)
+
+[node name="Icon" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/RivalScoreRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -10.0
+offset_right = 74.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 70
+text = "Ø"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="RivalScoreLabel" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/RivalScoreRect"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -10.0
+offset_right = 160.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="GameCountRect3" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI"]
+layout_mode = 0
+offset_right = 190.0
+offset_bottom = 90.0
+color = Color(0, 0, 0, 0.196078)
+
+[node name="Icon" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/GameCountRect3"]
+layout_mode = 0
+offset_top = -10.0
+offset_right = 72.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 60
+text = "#"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="GameCountLabel2" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/GameCountRect3"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -10.0
+offset_right = 190.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 60
+text = "0/0"
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="PlayerScoreRect2" type="ColorRect" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI"]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 190.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 0.196078)
+
+[node name="Icon" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/PlayerScoreRect2"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -10.0
+offset_right = 74.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 70
+text = "Ø"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="PlayerScoreLabel2" type="Label" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer/GameUI/PlayerScoreRect2"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -10.0
+offset_right = 166.0
+offset_bottom = 100.0
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 70
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="BoardAreas" type="Control" parent="T3SceneScreenMask/T3SceneMask/T3SceneOffset/T3SceneContainer"]
+layout_mode = 3
+anchors_preset = 0
+auto_translate = false
+localize_numeral_system = false
+mouse_filter = 1
