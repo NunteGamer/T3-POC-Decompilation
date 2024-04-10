@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b4rlnrf2o2ker"
+path="res://.godot/imported/face5.png-4d5f4234d796c475afb3336f6b9d685f.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/charas/daisy/face5.png"
+dest_files=PackedStringArray("res://.godot/imported/face5.png-4d5f4234d796c475afb3336f6b9d685f.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

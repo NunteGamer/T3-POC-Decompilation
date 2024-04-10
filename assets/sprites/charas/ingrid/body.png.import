@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b8wg4lp36rbe6"
+path="res://.godot/imported/body.png-1efc8adfe8731fe73b1cb40811a141ca.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/charas/ingrid/body.png"
+dest_files=PackedStringArray("res://.godot/imported/body.png-1efc8adfe8731fe73b1cb40811a141ca.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

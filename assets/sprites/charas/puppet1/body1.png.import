@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c32d8psqfcu3r"
+path="res://.godot/imported/body1.png-2f2929fc4250056d8bb6858abcc0598b.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/charas/puppet1/body1.png"
+dest_files=PackedStringArray("res://.godot/imported/body1.png-2f2929fc4250056d8bb6858abcc0598b.ctex")
+
+[params]
+
+dummy_value_ignore_me=0

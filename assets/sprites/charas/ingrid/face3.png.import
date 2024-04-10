@@ -1,0 +1,18 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bmi2xtv1iiej2"
+path="res://.godot/imported/face3.png-ce166d797c7d395e9617fb41134bde14.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/charas/ingrid/face3.png"
+dest_files=PackedStringArray("res://.godot/imported/face3.png-ce166d797c7d395e9617fb41134bde14.ctex")
+
+[params]
+
+dummy_value_ignore_me=0
